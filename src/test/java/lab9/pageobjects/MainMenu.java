@@ -1,6 +1,7 @@
 package lab9.pageobjects;
 
 import config.Lab8Config;
+import io.qameta.allure.Step;
 import lab9.Session;
 import lab9.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
@@ -24,10 +25,12 @@ public class MainMenu {
     By loc_main_menu = By.cssSelector("div.tabs__level.tabs-level_top.tabs-menu h3.tabs-menu__item-text");
     By loc_menu_item_byname(String item_name){ return By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[ contains(text(), '" + item_name +"')]");}
 
+    @Step
     public void waitUntilLoad (Session session){
         TestHelper.isPageLoad(session.getWaiter(), loc_1st_item, "Main Menu");
     }
 
+    @Step("Проверка кликабельности элемента меню {menuname}")
     public void clickItemByName (Session session,String menuname) throws Exception {
         By loc_item = By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[contains(text(), '" + menuname + "')]");
         TestHelper.clickOnElem(session.getWaiter(), loc_item, menuname);
@@ -40,23 +43,28 @@ public class MainMenu {
      }
 */
 
+    @Step
     public List<String> getAllMainMenuItems(Session session){
         return TestHelper.getAllMenuItems(session.getWebDriver(), loc_main_menu);
     }
 
+    @Step("Проверка выбора элемента меню {item_name}")
     public boolean isMenuItemSelected (Session session, String item_name){
         return session.getWebDriver().findElement(loc_menu_item_byname(item_name)).getAttribute("class").contains("tabs-menu__item-text_active");
    }
 
+   @Step
    public void openMainPage (Session session) throws Exception {
        TestHelper.getURL(session.getWebDriver(), cfg.hostname());
        TestHelper.isPageLoad(session.getWaiter(), loc_1st_item, "Main Menu");
    }
 
+
    public String getTitle (Session session) {
         return session.getWebDriver().getTitle();
    }
 
+   @Step
    public boolean titleContainString (Session session, String title_part){
         return session.getWebDriver().getTitle().contains(title_part);
    }

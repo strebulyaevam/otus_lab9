@@ -1,5 +1,9 @@
 package lab9;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import lab9.pageobjects.LoginPage;
 import lab9.pageobjects.MainMenu;
 import lab9.pageobjects.RegistrPage;
@@ -29,7 +33,11 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
     @Autowired
     Session session;
 
+    @Epic(value = "Lab9")
+    @Feature(value = "Test Login and Registration")
+    @Story(value = "Login feature selection")
     @Test
+    @Owner(value = "Стребуляева М.")
     public void buttonLoginDispalyTheCorrectPage() throws Exception {
         mainMenu.openMainPage(session);
         topMenu.waitUntilLoad(session);
@@ -38,7 +46,11 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
         Assert.assertTrue(mainMenu.titleContainString(session, "Вход"));
     }
 
+    @Epic(value = "Lab9")
+    @Feature(value = "Test Login and Registration")
+    @Story(value = "Registration feature selection")
     @Test
+    @Owner(value = "Стребуляева М.")
     public void buttonRegistrationDispalyTheCorrectPage() throws Exception {
         mainMenu.openMainPage(session);
         topMenu.waitUntilLoad(session);

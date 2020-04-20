@@ -1,5 +1,6 @@
 package lab9.pageobjects;
 
+import io.qameta.allure.Step;
 import lab9.Session;
 import lab9.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +16,7 @@ public class LoginPage {
 
     By loc_email = By.cssSelector("input[type='email']");
 
+    @Step
     public void waitUntilLoad (Session session){
         TestHelper.isPageLoad(session.getWaiter(), loc_email, "LoginPage");
     }

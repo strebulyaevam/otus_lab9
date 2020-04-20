@@ -1,5 +1,6 @@
 package lab9.pageobjects;
 
+import io.qameta.allure.Step;
 import lab9.Session;
 import lab9.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
@@ -22,28 +23,34 @@ public class TopMenu {
     By loc_loginbtn = By.cssSelector("a#login");
     By lo_regist_btn = By.cssSelector("a.btn.btn_medium.btn_navbar_registration");
 
+    @Step
     public void waitUntilLoad (Session session){
         TestHelper.isPageLoad(session.getWaiter(), loc_1st_item, "Top Menu");
     }
 
+    @Step("Проверка кликабельности элемента меню {menuname}")
     public void clickTopMenuItemByName (Session session, String menuname) throws Exception {
         Log.info("Try to click on " + menuname + " menu item in TOP menu");
         TestHelper.clickOnElem(session.getWaiter(), loc_topmenu_item_byname(menuname), menuname + " menu item in TOP menu");
         Log.info("Get menu " + menuname + " successfully");
     }
 
+    @Step
     public List<String> getAllTopMenuItems(Session session){
         return TestHelper.getAllMenuItems(session.getWebDriver(), loc_top_menu);
     }
 
+    @Step("Проверка выбора элемента меню {item_name}")
     public boolean isMenuItemSelected (Session session, String item_name){
         return session.getWebDriver().findElement(loc_topmenu_item_byname(item_name)).getAttribute("class").contains("nav-links__item-link_current");
     }
 
+    @Step
     public void clickOnLoginButton(Session session) throws Exception {
         TestHelper.clickOnElem(session.getWaiter(), loc_loginbtn, "Login btn");
     }
 
+    @Step
     public void clickOnRegistrButton(Session session) throws Exception {
         TestHelper.clickOnElem(session.getWaiter(), lo_regist_btn, "Registration btn");
     }

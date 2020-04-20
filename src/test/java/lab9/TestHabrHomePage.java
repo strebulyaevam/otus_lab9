@@ -1,6 +1,7 @@
 package lab9;
 
 import com.google.common.collect.ImmutableList;
+import io.qameta.allure.*;
 import lab9.pageobjects.MainMenu;
 import lab9.pageobjects.TopMenu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,23 @@ public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
     @Autowired
     Session session;
 
+
+    @Epic(value = "Lab9")
+    @Feature(value = "Test Habr Home page")
+    @Story(value = "Opening of the Habr Home Page")
     @Test
+    @Owner(value = "Стребуляева М.")
+    @Severity(value = SeverityLevel.BLOCKER)
     public void openHabrHomePage() throws Exception {
         mainMenu.openMainPage(session);
         Assert.assertEquals(mainMenu.getTitle(session), "Лучшие публикации за сутки / Хабр");
     }
 
+    @Epic(value = "Lab9")
+    @Feature(value = "Test Habr Home page")
+    @Story(value = "TopBar displaying")
     @Test
+    @Owner(value = "Стребуляева М.")
     public void topBarIsOntheHomePage() throws Exception {
         List<String> expResult = ImmutableList.<String>builder()
                 .add("Все потоки")
@@ -48,7 +59,11 @@ public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(expResult, actualResult);
     }
 
+    @Epic(value = "Lab9")
+    @Feature(value = "Test Habr Home page")
+    @Story(value = "First item of TopBar selection")
     @Test
+    @Owner(value = "Стребуляева М.")
     public void firstItemOfTopBarIsSelected() throws Exception {
         mainMenu.openMainPage(session);
         topMenu.waitUntilLoad(session);
