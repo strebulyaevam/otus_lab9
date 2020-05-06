@@ -30,9 +30,6 @@ public class TestConfig {
     @Autowired
     Lab8Config config;
 
-    @Autowired
-    WebDriver driver;
-
     @Bean
     public Lab8Config getConfig() {
         Lab8Config cfg = ConfigFactory.create(Lab8Config.class);
@@ -72,14 +69,4 @@ public class TestConfig {
 
         return driver;
     }
-
-/*
-    @PreDestroy
-    public void closeDriver() {
-        if (driver != null){
-            Log.info("Quit from browser");
-            driver.quit();
-        }
-    }
-*/
 }

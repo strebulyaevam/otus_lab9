@@ -29,4 +29,10 @@ public class Session {
     public WebDriverWait getWaiter() {
         return waiter;
     }
+
+    public void quit() {
+        if (webDriver != null){
+            webDriver.quit();
+        }
+    }
 }

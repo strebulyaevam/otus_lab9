@@ -12,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-@Test
+@Test(description = "Test Login and Registration")
 @ContextConfiguration(classes = TestConfig.class)
+@Feature(value = "Test Login and Registration")
+@Owner(value = "Стребуляева М.")
 public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -34,10 +37,8 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
     Session session;
 
     @Epic(value = "Lab9")
-    @Feature(value = "Test Login and Registration")
     @Story(value = "Login feature selection")
-    @Test
-    @Owner(value = "Стребуляева М.")
+    @Test(description = "Login feature selection")
     public void buttonLoginDispalyTheCorrectPage() throws Exception {
         mainMenu.openMainPage(session);
         topMenu.waitUntilLoad(session);
@@ -47,15 +48,18 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
     }
 
     @Epic(value = "Lab9")
-    @Feature(value = "Test Login and Registration")
     @Story(value = "Registration feature selection")
-    @Test
-    @Owner(value = "Стребуляева М.")
+    @Test(description = "Registration feature selection")
     public void buttonRegistrationDispalyTheCorrectPage() throws Exception {
         mainMenu.openMainPage(session);
         topMenu.waitUntilLoad(session);
         topMenu.clickOnRegistrButton(session);
         registrPage.waitUntilLoad(session);
         Assert.assertTrue(mainMenu.titleContainString(session, "Регистрация"));
+    }
+
+    @AfterClass
+    public void tearDown() {
+        session.quit();
     }
 }
