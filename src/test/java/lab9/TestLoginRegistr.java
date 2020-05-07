@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 
 @Test(description = "Test Login and Registration")
 @ContextConfiguration(classes = TestConfig.class)
+@Epic(value = "Lab9")
 @Feature(value = "Test Login and Registration")
 @Owner(value = "Стребуляева М.")
 public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
@@ -36,7 +37,7 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
     @Autowired
     Session session;
 
-    @Epic(value = "Lab9")
+
     @Story(value = "Login feature selection")
     @Test(description = "Login feature selection")
     public void buttonLoginDispalyTheCorrectPage() throws Exception {
@@ -47,7 +48,6 @@ public class TestLoginRegistr extends AbstractTestNGSpringContextTests {
         Assert.assertTrue(mainMenu.titleContainString(session, "Вход"));
     }
 
-    @Epic(value = "Lab9")
     @Story(value = "Registration feature selection")
     @Test(description = "Registration feature selection")
     public void buttonRegistrationDispalyTheCorrectPage() throws Exception {

@@ -16,6 +16,7 @@ import java.util.List;
 
 @Test(description = "Test Habr Home page")
 @ContextConfiguration(classes = TestConfig.class)
+@Epic(value = "Lab9")
 @Feature(value = "Test Habr Home page")
 @Owner(value = "Стребуляева М.")
 public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
@@ -30,7 +31,7 @@ public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
     Session session;
 
 
-    @Epic(value = "Lab9")
+
     @Story(value = "Opening of the Habr Home Page")
     @Test(description = "Opening of the Habr Home Page")
     @Severity(value = SeverityLevel.BLOCKER)
@@ -39,7 +40,6 @@ public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(mainMenu.getTitle(session), "Лучшие публикации за сутки / Хабр");
     }
 
-    @Epic(value = "Lab9")
     @Story(value = "TopBar displaying")
     @Test(description = "TopBar displaying")
     public void topBarIsOntheHomePage() throws Exception {
@@ -59,7 +59,6 @@ public class TestHabrHomePage extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(expResult, actualResult);
     }
 
-    @Epic(value = "Lab9")
     @Story(value = "First item of TopBar selection")
     @Test(description = "First item of TopBar selection")
     public void firstItemOfTopBarIsSelected() throws Exception {
